@@ -1,0 +1,237 @@
+html{
+    font-size: 20px;
+}
+body{
+    margin:0;
+    height: 100vh;
+}
+
+.whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      padding: 20px;
+      font-size: 32px;
+      z-index: 100;
+      text-decoration: none;
+
+    }
+.whatsapp-float:hover{
+    transition-property: all;
+    transition-duration: 0.5s;
+    transform: scale(1.3);    
+}
+
+/*
+header
+*/
+header{
+    height: 20%;
+    background-color:ghostwhite;
+    display: flex;
+    align-items: center;
+}
+.logo{
+    width: 120px;
+    height: 120px;
+    background-size: cover;
+    background-image: url(logok.png);
+}
+.headeryazi{
+    font-size: 3rem;
+    color:darkgoldenrod;
+}
+nav{
+height: 100%;
+width: 50%;
+margin-left: auto;
+display: flex;
+align-items: center;
+justify-content: space-around;
+}
+nav li{
+    list-style: none;
+    margin: 0;
+}
+nav li a{
+    text-decoration: none;
+    color:darkgoldenrod;  
+    transition: all 0.2s;
+}
+nav li a:hover{
+    font-size: larger;
+}
+.dildegis{
+    color:darkgoldenrod;
+}
+
+/*
+slider
+*/
+
+.slider-container {
+  position: relative;
+  width: 95%;
+  justify-self: center;
+  height: 600px;
+  max-width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.slider img {
+  width: 100vw;
+  flex-shrink: 0;
+  object-fit: contain; 
+  display: block; 
+}
+
+.arrow {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 30px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.left {
+  position: absolute;
+  left: 10px;
+}
+
+.right {
+  position: absolute;
+  right: 10px;
+}
+/*
+Rezervasyon
+*/
+.reservation-form {
+    margin-top: 20px;
+    justify-self: center;
+      background: #f5f5f5;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 1200px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 50px;
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: flex-end;
+    }
+
+
+
+    .reservation-form label {
+      display: block;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 5px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .reservation-form .form-group {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 180px; /* genişlik flex baz */
+      min-width: 150px;
+    }
+
+    .reservation-form select,
+    .reservation-form input {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+
+    .reservation-form select:focus,
+    .reservation-form input:focus {
+      border-color: #25d366;
+      outline: none;
+    }
+
+    .reservation-form button {
+      padding: 15px 40px;
+      background-color: #25d366;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 18px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+      flex-shrink: 0;
+      align-self: flex-start;
+      margin-left: 10px;
+    }
+
+    .reservation-form button:hover {
+      background-color: #1ebc59;
+    }
+
+/*
+footer
+*/
+footer {
+      background-color: #222;
+      color: white;
+      width: 100%;
+      padding: 40px 0 30px 0;
+      margin-top: auto;
+      font-size: 14px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .footer-column {
+      width: 30%;
+    }
+
+    .footer-column h3 {
+      margin-bottom: 15px;
+      font-weight: 700;
+      border-bottom: 2px solid #25d366;
+      padding-bottom: 8px;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-column ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-column ul li a:hover {
+      color: #25d366;
+    }
