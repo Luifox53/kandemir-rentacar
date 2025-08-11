@@ -1,0 +1,95 @@
+html{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #002546;
+}
+body{
+    margin:0;
+    height: 100vh;
+    background-color: rgb(249, 249, 249);
+}
+
+/*
+header
+*/
+header{
+    height: 12%;
+    background-color:rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+}
+.logo{
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-image: url(rentacarlogo.png);
+}
+.headertext{
+  font-size: 28px;
+  margin-left: 24px;
+}
+nav{
+  margin-left: auto;
+  padding-right: 24px;
+  display: flex;
+  width: 30%;
+  justify-content: space-between;
+}
+nav a{
+  text-decoration: none;
+  color: black;
+  position: relative;
+}
+nav .link::after{
+  content: "";
+  position: absolute;
+  width: 0px;
+  height: 2px;
+  bottom: -3px;
+  left: 50%;
+  background-color:#002546;
+  transition: all 0.3s;
+}
+nav .link:hover::after{
+width: 100%;
+left: 0;
+}
+#dropdown-toggle{
+  color: black;
+  cursor: pointer;
+} 
+#dropdown-menu{
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  z-index: 2;
+  background-color: white;
+}
+#dropdown-menu a{ 
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+#dropdown-menu a:hover{
+transition: background-color 0.2s;
+background-color: rgb(187, 196, 209);
+}
+@media (max-width:700px){
+    header{
+        position: relative;
+    }
+    nav{
+        position: absolute;
+        top: 12vh;
+        left: 0;
+        background-color: rgb(255, 255, 255);
+        width: 100%;
+        font-size: medium;
+        justify-content: space-around;
+        padding: 0;
+        padding-top: 10px;
+    }
+    .logo{
+        background-size: contain;
+    }
+}

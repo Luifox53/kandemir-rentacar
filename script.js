@@ -1,5 +1,5 @@
 let a = true;
-document.getElementById("changelang").addEventListener("click",function(){
+document.getElementById("dropdown-toggle").addEventListener("click",function(){
 
 if(a){
     document.getElementById("dropdown-menu").style.display = "flex";
@@ -12,7 +12,3 @@ else{
 }
 });
 
-document.getElementById("changelang").addEventListener("click", function (e) {
-  e.preventDefault();
-  document.getElementById("dropdown-menu").style.display = "flex";
-});

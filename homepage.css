@@ -1,0 +1,140 @@
+/*
+slider
+*/
+.slider-container {
+    position: relative;
+    overflow: hidden;
+    height: 68%;
+
+  }
+.slider{
+    height: 100%;
+    width: 300vw;
+    display: flex;
+    transition: all 0.5s ease-in-out;
+}
+.slider img{
+  height: 100%;
+  width: 100vw;
+  object-fit:cover;
+}
+.slider-container button{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.601);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.slider-container button:hover{
+  transform: scale(1.2);
+}
+.leftArrow{
+  top: 50%;
+  left: 10px;
+}
+.rightArrow{
+  top: 50%;
+  right: 10px;
+}
+/*
+Rezervation form
+*/
+form{
+  height: 20%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+.formgroups{
+  height: 70%;
+  width: 80%;
+  border-radius: 12px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.formgroups button {
+    width: 80px;
+    height: 50px;
+    background: #25d366;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}    
+.formgroups button:hover{
+  background-color:#1ebc59;;
+}
+.formgroup{
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+.formgroup select{
+  width: 90%;
+  height: 36px;
+  border: 1px solid rgba(0, 0, 0, 0.135);
+  border-radius: 4px;
+}
+/*
+Section
+*/
+section{
+  width: 100%;
+  height: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(249, 249, 249);
+}
+.columns{
+  width: 70%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.column{
+  height: 100%;
+  width: 33%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.ball{
+  background-color: #1ebc59;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+@media (max-width:768px) {
+  #whatsapp-float{
+    left: 20px;
+    bottom: 100px;
+  }
+  form{
+    font-size: 14px;
+  }
+  .formgroups{
+    width: 95%;
+    padding: 5px;
+  }
+}
