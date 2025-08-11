@@ -1,11 +1,21 @@
+<?php
+session_start();
+
+include 'db_connect.php';
+
+$sql = "SELECT lokasyon, fiyat FROM lokasyonlar";
+    $result = $conn->query($sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antalya Transfer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="homepage.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/homepage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.7.0/css/flag-icons.min.css">
 
@@ -17,10 +27,10 @@
 <!--Header-->
 <header>
     <div class="logo"></div>
-    <h1 class="headertext"><a href="index.html">Antalya Transfer</a></h1>
+    <h1 class="headertext"><a href="index.php">Antalya Transfer</a></h1>
     <nav>
       <a class="link" href="">SSS</a>
-      <a class="link" href="lokasyonlar.html">Lokasyonlar</a>
+      <a class="link" href="lokasyonlar.php">Lokasyonlar</a>
       <a class="link" href="">İletişim</a>
       <div id="dropdown-toggle">
         <i class="fi fi-tr"></i> Türkçe
@@ -37,39 +47,44 @@
 <!--Slider-->
 <div class="slider-container">
   <div class="slider">
-    <img src="photos/araba1.jpg">  
-    <img src="photos/araba2.jpg">  
-    <img src="photos/araba3.jpg">
+    <img src="assets/images/araba1.jpg">  
+    <img src="assets/images/araba2.jpg">  
+    <img src="assets/images/araba3.jpg">
   </div>
   <button class="leftArrow" onclick="prevSlide()">&#8592;</button>
   <button class="rightArrow" onclick="nextSlide()">&#8594;</button>
 </div>
 
 <!--Reservation form-->
-<form action="">
+<form action="arabalar.php" method="GET">
   <div class="formgroups">
-  <div class="formgroup">
-    <label for="">Kişi Sayısı</label>
-    <select name="" id="">
-        <option>1</option><option>2</option><option>3</option>
-        <option>4</option><option>5</option><option>6</option>
-        <option>7</option><option>8</option><option>9</option><option>10</option>
-    </select>
-  </div>
-  <div class="formgroup">
-    <label for="">Nereden</label>
-    <select name="" id="">
-      <option value="">Antalya Havalimanı</option>
-    </select>
-  </div>
-  <div class="formgroup">
-    <label for="">Nereye</label>
-    <select name="" id="">
-      <option value="">Belek</option><option value="">Çolak</option><option value="">Lara</option>
-
-    </select>
-  </div>
-  <button type="submit">Araba Bul</button>
+    <div class="formgroup">
+      <label for="kisiler">Kişi Sayısı</label>
+      <select name="kisiler" id="kisiler">
+          <?php for ($i = 1; $i <= 10; $i++): ?>
+              <option value="<?= $i ?>"><?= $i ?></option>
+          <?php endfor; ?>
+      </select>
+    </div>
+    <div class="formgroup">
+      <label for="nereden">Nereden</label>
+      <select name="" id="">
+        <option value="">Antalya Havalimanı</option>
+      </select>
+    </div>
+    <div class="formgroup">
+      <label for="nereye">Nereye</label>
+      <select name="nereye" id="nereye" required>
+        <option value="" disabled selected>Bir lokasyon seçiniz</option><?php
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $lokasyon = htmlspecialchars($row['lokasyon']);
+                echo "<option value=\"$lokasyon\">$lokasyon</option>";
+            }
+        }?>
+      </select>
+    </div>
+    <button type="submit">Araba Bul</button>
   </div>
 </form>
 

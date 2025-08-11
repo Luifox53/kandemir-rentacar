@@ -51,7 +51,7 @@ header{
     width: 100px;
     height: 100px;
     background-size: cover;
-    background-image: url(rentacarlogo.png);
+    background-image: url(../images/rentacarlogo.png);
 }
 .headertext{
   font-size: 28px;
