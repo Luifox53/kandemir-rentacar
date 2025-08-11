@@ -57,6 +57,7 @@ $sql = "SELECT lokasyon, fiyat FROM lokasyonlar";
 
 <!--Reservation form-->
 <form action="arabalar.php" method="GET">
+
   <div class="formgroups">
     <div class="formgroup">
       <label for="kisiler">Kişi Sayısı</label>
