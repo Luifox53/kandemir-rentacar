@@ -1,0 +1,54 @@
+
+    .wrap { 
+    width: min(920px, 100%);
+    justify-self: center;
+    margin-top: 40px;
+    margin-bottom: 120px;
+    }
+    
+
+    .title { 
+    font-size: clamp(28px, 3.6vw, 40px);
+    letter-spacing: .3px; 
+    text-align: center;
+}
+    .subtitle { margin: 0 0 28px; color: var(--muted); }
+
+    .faq {
+      background: color-mix(in lab, var(--card), black 6%);
+      border: 1px solid color-mix(in lab, var(--accent), #0f2131 84%);
+      border-radius: 18px; padding: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+
+    .item { border-radius: 14px; overflow: clip; }
+    .item + .item { margin-top: 10px; }
+
+    .question { /* button */
+      width: 100%; display: grid; grid-template-columns: 1fr auto; align-items: center;
+      gap: 16px; border: 0; background: transparent; color: inherit; text-align: left;
+      padding: 18px 20px; font-size: 17px; cursor: pointer; position: relative;
+      border-radius: 12px;
+    }
+    .question:hover, .question:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--ring) inset; }
+
+    .icon { width: 22px; height: 22px; flex: 0 0 22px; transition: transform .28s ease; }
+    .item[aria-expanded="true"] .icon { transform: rotate(45deg); }
+
+    .panel {
+      max-height: 0; overflow: hidden; transition: max-height .34s ease;
+      padding: 0 20px; color: var(--muted);
+    }
+    .panel-inner { padding: 0 0 18px; }
+
+    /* Ayraç çizgisi */
+    .item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,.06); }
+
+    .wrap a { color: var(--accent); text-decoration: none; }
+    .wrap a:hover { text-decoration: underline; }
+
+    /* Küçük ekran düzenlemeleri */
+    @media (max-width: 520px) {
+      .question { padding: 16px; }
+      .panel { padding: 0 16px; }
+      .wrap .title{margin-top: 80px;}
+    }

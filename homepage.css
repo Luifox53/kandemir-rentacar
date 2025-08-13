@@ -92,19 +92,20 @@ Section
 */
 section{
   width: 100%;
-  height: 75%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: rgb(249, 249, 249);
 }
+section h2{
+  margin-bottom: 80px;
+}
 .columns{
   width: 70%;
-  height: 80%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-bottom: 40px;
 }
 .column{
   height: 100%;
@@ -114,6 +115,9 @@ section{
   flex-direction: column;
   margin-left: 5px;
   margin-right: 5px;
+}
+.column h3{
+  text-align: center;
 }
 .ball{
   background-color: #1ebc59;
@@ -127,8 +131,8 @@ section{
 }
 @media (max-width:768px) {
   #whatsapp-float{
-    left: 20px;
-    bottom: 100px;
+    right: 20px;
+    bottom: 140px;
   }
   form{
     font-size: 14px;
@@ -137,4 +141,18 @@ section{
     width: 95%;
     padding: 5px;
   }
+.columns{
+  flex-direction: column;
+  width: 90%;
+  align-items: center;
+}
+.column{
+  width: 100%;
+}
+.column h3{
+  margin-bottom: 0;
+}
+section h2{
+  margin-bottom: 15px;
+}
 }
