@@ -3,6 +3,9 @@ session_start();
 
 include 'db_connect.php';
 
+$kisiler = $_GET["kisiler"] ?? "";
+$nereye = $_GET['nereye'] ?? '';
+
 $lokasyon_fiyat = [];
 $sql2 = "SELECT lokasyon, fiyat FROM lokasyonlar";
 $result2 = $conn->query($sql2);
@@ -15,8 +18,7 @@ if ($result2 && $result2->num_rows > 0) {
 $sql = "SELECT id, isim, foto_yolu, kisi_alani FROM arabalar";
     $result = $conn->query($sql);
 
-$kisiler = $_GET["kisiler"] ?? "";
-$secili_lokasyon = $_GET['nereye'] ?? '';
+
 ?>
 
 
@@ -41,9 +43,9 @@ $secili_lokasyon = $_GET['nereye'] ?? '';
     <div class="logo"></div>
     <h1 href="index.php" class="headertext"><a href="index.php">Antalya Transfer</a></h1>
     <nav>
-      <a class="link" href="">SSS</a>
+      <a class="link" href="sss.php">SSS</a>
       <a class="link" href="lokasyonlar.php">Lokasyonlar</a>
-      <a class="link" href="">İletişim</a>
+      <a class="link" href="iletisim.php">İletişim</a>
       <div id="dropdown-toggle">
         <i class="fi fi-tr"></i> Türkçe
         <div id="dropdown-menu">
@@ -60,12 +62,12 @@ $secili_lokasyon = $_GET['nereye'] ?? '';
   <h1>Mevcut Arabalar</h1>
   <div class="container">
 
-    <?php
+    <?php 
 
     if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
           // Seçilen lokasyonun fiyatı varsa al, yoksa 0 veya boş yap
-          $fiyat = $lokasyon_fiyat[$secili_lokasyon] ?? 'Fiyat bilgisi yok';
+          $fiyat = $lokasyon_fiyat[$nereye] ?? 'Fiyat bilgisi yok';
           ?>
           <div class="car-card">
             <div class="car-content">
@@ -85,7 +87,8 @@ $secili_lokasyon = $_GET['nereye'] ?? '';
                 <form action="rezervasyon.php" method="GET">
                   <input type="hidden" name="car_id" value="<?= htmlspecialchars($row['id']) ?>">
                   <input type="hidden" name="kisiler" value="<?= htmlspecialchars($_GET['kisiler'] ?? '') ?>">
-                  <input type="hidden" name="nereye" value="<?= htmlspecialchars($secili_lokasyon) ?>">
+                  <input type="hidden" name="nereye" value="<?= htmlspecialchars($nereye) ?>">
+                  <input type="hidden" name="fiyat" value="<?= htmlspecialchars($fiyat) ?>">
                   <button type="submit">Arabayı Seç</button>
                 </form>
               </div>

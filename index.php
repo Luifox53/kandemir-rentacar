@@ -29,9 +29,9 @@ $sql = "SELECT lokasyon, fiyat FROM lokasyonlar";
     <div class="logo"></div>
     <h1 class="headertext"><a href="index.php">Antalya Transfer</a></h1>
     <nav>
-      <a class="link" href="">SSS</a>
+      <a class="link" href="sss.php">SSS</a>
       <a class="link" href="lokasyonlar.php">Lokasyonlar</a>
-      <a class="link" href="">İletişim</a>
+      <a class="link" href="iletisim.php">İletişim</a>
       <div id="dropdown-toggle">
         <i class="fi fi-tr"></i> Türkçe
         <div id="dropdown-menu">
@@ -47,9 +47,9 @@ $sql = "SELECT lokasyon, fiyat FROM lokasyonlar";
 <!--Slider-->
 <div class="slider-container">
   <div class="slider">
-    <img src="assets/images/araba1.jpg">  
-    <img src="assets/images/araba2.jpg">  
-    <img src="assets/images/araba3.jpg">
+    <img src="assets/images/vito.jpg">  
+    <img src="assets/images/audia8.jpg">  
+    <img src="assets/images/tesla.jpg">
   </div>
   <button class="leftArrow" onclick="prevSlide()">&#8592;</button>
   <button class="rightArrow" onclick="nextSlide()">&#8594;</button>
