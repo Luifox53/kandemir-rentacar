@@ -40,13 +40,11 @@
     }
     .panel-inner { padding: 0 0 18px; }
 
-    /* Ayraç çizgisi */
     .item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,.06); }
 
     .wrap a { color: var(--accent); text-decoration: none; }
     .wrap a:hover { text-decoration: underline; }
 
-    /* Küçük ekran düzenlemeleri */
     @media (max-width: 520px) {
       .question { padding: 16px; }
       .panel { padding: 0 16px; }

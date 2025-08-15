@@ -1,6 +1,9 @@
 h1{
     text-align: center;
 }
+.mg-top{
+    margin-top: 60px;
+}
 .main{
     width: 90%;
     justify-self: center;
