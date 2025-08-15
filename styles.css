@@ -102,6 +102,8 @@ left: 0;
   height: 30px;
   display: flex;
   align-items: center;
+  box-sizing: border-box;
+  padding: 4px;
 }
 #dropdown-menu a:hover{
 transition: background-color 0.2s;
