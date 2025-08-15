@@ -89,13 +89,14 @@ left: 0;
 #dropdown-toggle{
   color: black;
   cursor: pointer;
+
 } 
 #dropdown-menu{
   position: absolute;
   display: none;
   flex-direction: column;
   z-index: 2;
-  background-color: white;
+  background-color: rgb(240, 240, 240);
 }
 #dropdown-menu a{ 
   height: 30px;
@@ -200,4 +201,17 @@ footer {
     .logo{
         background-size: contain;
     }
+    nav .link{
+      padding-bottom: 5px;
+      padding-top: 5px;
+    }
+    #dropdown-toggle{
+        box-sizing: border-box;
+        padding-top: 5px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1016px) {
+nav{
+  width: 40%;
+}
 }

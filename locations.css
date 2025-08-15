@@ -9,9 +9,38 @@ h1{
     row-gap: 30px;
     column-gap: 50px;
     justify-content: center;
+    margin-bottom: 40px;
 }
-.loc-card{
+.loc-card {
     width: 300px;
-    height: 200px;
-    background: #fd1616;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    font-family: sans-serif;
 }
+
+/* Görsel kısmı */
+.loc-img {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.loc-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Yazı kısmı */
+.loc-text {
+    padding: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background-color: #f8f8f8;
+}
+
