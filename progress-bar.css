@@ -1,0 +1,55 @@
+.progress-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 80%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+.item {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.stepname {
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+}
+
+.progress-lines {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.progress-line {
+    flex: 1;
+    height: 4px;
+    background-color: #dcdcdc;
+}
+
+.waypoint {
+    width: 18px;
+    height: 18px;
+    border: 3px solid #dcdcdc;
+    border-radius: 50%;
+    background-color: white;
+    z-index: 2;
+}
+.active{
+    background-color:#0066a1;
+    border-color: #0066a1;
+
+}
+@media (max-width:768px){
+    .progress-container{
+        display: none;
+    }
+}

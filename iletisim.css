@@ -82,7 +82,8 @@ main a:hover {
   text-decoration: underline;
 }
 .map{
-    justify-self: center;
+    margin-right: auto;
+    margin-left: auto;
     text-align: center;
     margin-bottom: 40px;
     width: 95%;
