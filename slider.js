@@ -19,3 +19,17 @@ const slider = document.querySelector('.slider');
       updateSlider();
     }
   }
+  const whatsapp = document.getElementById("whatsapp-float");
+
+   window.addEventListener("scroll", () => {
+    // sadece mobil için uygula
+    if (window.innerWidth <= 768) {
+      if (window.scrollY > 80) { // 200px aşağı kayınca
+        whatsapp.style.right = "20px";
+        whatsapp.style.bottom = "20px";
+      } else {
+        whatsapp.style.right = "20px";
+        whatsapp.style.bottom = "140px";
+      }
+    }
+  });

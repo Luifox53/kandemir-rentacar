@@ -6,7 +6,8 @@ h1{
 }
 .main{
     width: 90%;
-    justify-self: center;
+    margin-right: auto;
+    margin-left: auto;
     display: flex;
     flex-wrap: wrap;
     row-gap: 30px;

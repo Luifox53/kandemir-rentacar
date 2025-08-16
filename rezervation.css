@@ -87,7 +87,7 @@ input:focus {
     background-color: #4CAF50;
     border-radius: 8px;
     margin-bottom: 10px;
-    background-image: url(photos/araba1.jpg);
+    background-image: url(photos/slider1.jpg); /*BURAYI KENDİNE GÖRE AYARLA!!!!!!*/
     background-size: cover;
     background-position: 0px;
     background-repeat: no-repeat;
@@ -110,19 +110,18 @@ input:focus {
 
 /* Fiyat kutusu */
 .price-box {
-    background-color: #4CAF50;
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    border-radius: 8px;
-    margin: 10px 0;
+  text-align: center;
 }
 
 .price-box .price {
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0;
+  display: inline-block;
+  padding: 8px 20px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2e7d32;              /* yeşil ton */
+  background: #e8f5e9;         /* açık yeşil arka plan */
+  border-radius: 8px;
+  margin: 10px 0px;
 }
 
 /* Rezervasyon butonu */
