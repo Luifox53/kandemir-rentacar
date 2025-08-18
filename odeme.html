@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="payment.css">
     <link rel="stylesheet" href="progress-bar.css">
+    <link rel="stylesheet" href="rezervation.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.7.0/css/flag-icons.min.css">
 
@@ -77,8 +78,78 @@
 
 <!--Content-->
 
+<div class="flex">
+  <div class="parent">
+    <h4 style="text-align: center;">Ödeme Seçenekleri</h4>
+    <form class="payment-options">
 
+      <label for="EFT">
+        <span> <i class="fa-solid fa-credit-card"></i> EFT / Havale</span>
+        <input type="radio" id="EFT" name="pay-option" class="option" checked focus>
+      </label>
 
+      <label for="cash">
+        <span> <i class="fa-solid fa-wallet"></i> Nakit Öde </span>
+        <input type="radio" id="cash" name="pay-option" class="option">
+      </label>
 
+    </form>
+
+    <div id="info-box">
+    <h5 id="info-header"><i id="card" class="fa-solid fa-credit-card"></i> EFT / Havale</h5>
+    <p id="info">Rezervasyonunuz onaylandıktan sonra EFT/Havale ile ödeme yapmak
+       için IBAN numarası tarafınıza iletilecektir.</p>
+    </div>
+    <div class="button-box">
+      <button type="submit">Rezervasyonu Tamamla</button>
+    </div>
+  </div>
+  
+    <div class="transport-info">
+      <div class="car-img"></div>
+      <h3>Nereden</h3>
+      <p>Antalya Havalimanı</p>
+      <h3>Nereye</h3>
+      <p>Belek</p>
+      <h3>Kişi Sayısı</h3>
+      <p>3 kişi</p>
+      <div class="price-box">
+        <h4 class="price">50 tl</h4>
+      </div>
+    </div>
+
+</div>
+
+<!--Footer-->
+<footer>
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>İletişim</h3>
+            <ul>
+                <li><a href="#">📞 +90 555 555 5555</a></li>
+                <li><a href="#">✉ info@kandemirrentacar.com</a></li>
+                <li><a href="#">📍 İstanbul, Türkiye</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Kurumsal</h3>
+            <ul>
+                <li><a href="#">Hakkımızda</a></li>
+                <li><a href="#">Kariyer</a></li>
+                <li><a href="#">Basın</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Bizi Takip Edin</h3>
+            <ul class="socials">
+                <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+<script src="payment.js"></script>
 </body>
 </html>
