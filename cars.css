@@ -38,7 +38,7 @@
 .car-img {
   flex: 0 0 200px;
   height: 120px;
-  background: #ccc url(photos/araba1.jpg) center/cover no-repeat;
+  background: #ccc url(photos/slider1.jpg) center/cover no-repeat;
   border-radius: 8px;
 }
 

@@ -1,0 +1,115 @@
+Header
+    Antalya Transfer
+    SSS
+    Lokasyonlar
+    iletişim
+
+Footer
+    İletişim
+    İstanbul, Türkiye
+    Kurumsal
+    Hakkımızda
+    Kariyer
+    Basın
+    Bizi Takip Edin
+
+progress-bar(arabalar.html Rezervasyonyap.html ödeme.html)
+    Araç Seçimi
+    Rezervasyon Detayları
+    Ödeme Yöntemi
+    Sonuçlandır
+
+Anasayfa(index.html)
+    Kişi Sayısı
+    Nereden
+    Nereye
+    Araba Bul
+
+    Hizmet Süreci
+    Kolay Rezervasyon
+    Rezervasyon işlemlerimiz hızlı ve basittir. Web sitemiz üzerinden birkaç adımda transferinizi planlayabilir, tarih ve saat seçiminizi yaparak kolayca onaylayabilirsiniz.
+    Deneyimli Şoförler
+    Profesyonel şoför kadromuz, gerekli tüm belgeler ve eğitimlerle donatılmıştır. Yolculuk boyunca güvenli, konforlu ve sorunsuz bir deneyim yaşamanız için hizmetinizdedirler.
+    Konforlu ve Lüks Araçlar
+    Araç filomuz modern, güvenli ve rahat yolculuk sunacak şekilde tasarlanmıştır. Antalya’daki transferinizi keyifli ve sorunsuz bir şekilde gerçekleştirebilirsiniz.
+
+Arabalar
+    Mevcut Arabalar
+    Özel Araç
+    Vip Araç
+    1-4 kişi
+    Seç
+Rezervasyonyap
+    Kişisel Bilgiler
+    İsim
+    E-posta
+    Tel-No
+    Varış Bilgileri
+    Uçak iniş Tarih/Saat
+    Uçuş Numarası
+    Otel Adı
+    Yolcu 1
+    Ad Soyad
+    Kimlik/Pasaport No
+    Nereden
+    Nereye
+    Kişi Sayısı
+    Devam Et
+odeme
+    Ödeme Seçenekleri
+    EFT / Havale
+    Nakit Öde
+    //
+    burası değişken js ile değişiyor ona göre js deki yazıları yazdım (payment.js)
+
+    EFT / Havale
+    Rezervasyonunuz onaylandıktan sonra EFT/Havale ile ödeme yapmak
+       için IBAN numarası tarafınıza iletilecektir.
+    Nakit Öde
+    Ödemenizi, transferin gerçekleşeceği tarih ve saatte aracınızın şoförüne elden teslim edebilirsiniz.
+    //
+    Rezervasyonu Tamamla
+    Nereden
+    Nereye
+    Kişi Sayısı
+
+SSS
+    Sık Sorulan Sorular
+    Havalimanından otelinize transfer kaç dakika sürer?
+    Güzergâha bağlı olarak değişir. Antalya Havalimanı → Belek ortalama <strong>35–45 dk</strong> sürer. Trafik yoğunluğu, yol çalışması ve mola gibi etkenler süreyi değiştirebilir.
+    Ödeme yöntemleriniz nelerdir?
+    Nakit, kredi/banka kartı ve online ödeme kabul ediyoruz. Kurumsal müşteriler için fatura kesimi yapılır.
+    İptal ve iade koşulları nelerdir?
+    Transfer saatinden <strong>12 saat önce</strong>ye kadar ücretsiz iptal edebilirsiniz. Daha geç iptallerde tek yön ücretinin %50’si yansıtılır.
+    Çocuk koltuğu sağlıyor musunuz?
+    Evet. Rezervasyon notunda yaş ve adet belirtildiğinde <strong>ücretsiz</strong> çocuk koltuğu temin edilir.
+    Uçuşum rötar yaparsa bekler misiniz?
+    Uçuş bilgilerinizi takip ediyoruz; rötarlarda ek ücret almadan bekleme sağlanır.
+
+iletisim
+    Bize Ulaşın
+    Her türlü soru, öneri ve rezervasyon talepleriniz için aşağıdaki formu doldurabilirsiniz.
+    Adınız Soyadınız
+    E-posta
+    Telefon
+    Mesajınız
+    İletişim Bilgilerimiz
+    Telefon:
+    E-posta:
+    Adres:
+    Çalışma Saatlerimiz
+    Pazartesi - Cumartesi: 09:00 - 20:00
+    Pazar: 10:00 - 18:00
+    Bizi Takip Edin
+hakkinda
+    Hakkımızda
+    /
+    Seyahatinizi konforlu, güvenli ve hızlı hale getirmek için buradayız. VIP transfer hizmetimizle,
+    sizi havalimanından otelinize veya istediğiniz noktaya lüks araçlarımız ve deneyimli şoförlerimizle taşıyoruz.
+    Zamanınızı değerli biliyor ve her yolculuğu kusursuz bir deneyime dönüştürmeyi hedefliyoruz.
+    Müşteri memnuniyeti ve güvenliği bizim için önceliktir. Modern araç filomuz,
+    profesyonel ekibimiz ve esnek hizmet anlayışımızla, her transferinizde kendinizi özel hissetmenizi sağlıyoruz.
+    /
+
+
+
