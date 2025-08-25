@@ -1,10 +1,26 @@
 <?php
-session_start();
+require 'includes/session_manager.php';
+initSession();
 
 require 'includes/db_connect.php';
 
-$kisiler = $_POST["kisiler"] ?? "";
-$nereye = $_POST['nereye'] ?? '';
+// POST verilerini kontrol et ve session'a kaydet
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $kisiler = $_POST["kisiler"] ?? '';
+    $nereye = $_POST['nereye'] ?? '';
+    
+    // Session'a kaydet
+    setSessionData('kisiler', $kisiler);
+    setSessionData('nereye', $nereye);
+    
+    // POST sonrası yönlendirme (PRG pattern)
+    header("Location: arabalar.php");
+    exit;
+}
+
+// GET isteği - session'dan verileri al
+$kisiler = getSessionData('kisiler');
+$nereye = getSessionData('nereye');
 
 $lokasyon_fiyat = [];
 $sql2 = "SELECT lokasyon, fiyat FROM lokasyonlar";
@@ -43,6 +59,9 @@ $sql = "SELECT id, isim, foto_yolu, kisi_alani FROM arabalar";
 
 <!--Content-->
 <div class="main">
+  <div style="margin-bottom: 20px;">
+    <a href="index.php" class="back-button" style="background: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">← Geri Dön</a>
+  </div>
   <h1>Mevcut Arabalar</h1>
   <div class="container">
 
@@ -71,7 +90,7 @@ $sql = "SELECT id, isim, foto_yolu, kisi_alani FROM arabalar";
                 <?= is_numeric($fiyat) ? $fiyat . ' €' : $fiyat ?>
                 <form action="rezervasyon.php" method="POST">
                   <input type="hidden" name="car_id" value="<?= htmlspecialchars($row['id']) ?>">
-                  <input type="hidden" name="kisiler" value="<?= htmlspecialchars($_POST['kisiler'] ?? '') ?>">
+                  <input type="hidden" name="kisiler" value="<?= htmlspecialchars($kisiler) ?>">
                   <input type="hidden" name="nereye" value="<?= htmlspecialchars($nereye) ?>">
                   <input type="hidden" name="fiyat" value="<?= htmlspecialchars($fiyat) ?>">
                   <button type="submit">Arabayı Seç</button>

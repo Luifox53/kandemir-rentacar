@@ -1,14 +1,57 @@
 <?php
-session_start();
+require 'includes/session_manager.php';
+initSession();
 
 require 'includes/db_connect.php';
 
-$foto_yolu = '';
-$car_id = $_POST['car_id'] ?? '';
-$kisiler = $_POST["kisiler"] ?? "";
-$nereye = $_POST['nereye'] ?? '';
-$fiyat = $_POST['fiyat'] ?? '';
+// Session süresi dolmuşsa uyarı ver
+if (isset($_SESSION['session_expired'])) {
+    unset($_SESSION['session_expired']);
+    echo "<script>alert('Oturum süresi doldu. Lütfen baştan başlayın.'); window.location.href='index.php';</script>";
+    exit;
+}
 
+$foto_yolu = '';
+// POST verilerini kontrol et ve session'a kaydet
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car_id'])) {
+    $car_id = $_POST['car_id'] ?? '';
+    $kisiler = $_POST["kisiler"] ?? '';
+    $nereye = $_POST['nereye'] ?? '';
+    $fiyat = $_POST['fiyat'] ?? '';
+    
+    // Session'a kaydet
+    setSessionData('car_id', $car_id);
+    setSessionData('kisiler', $kisiler);
+    setSessionData('nereye', $nereye);
+    setSessionData('fiyat', $fiyat);
+    
+    // POST sonrası yönlendirme (PRG pattern)
+    header("Location: rezervasyon.php");
+    exit;
+}
+
+// GET isteği - session'dan verileri al
+$car_id = getSessionData('car_id');
+$kisiler = getSessionData('kisiler');
+$nereye = getSessionData('nereye');
+$fiyat = getSessionData('fiyat');
+
+// Form verilerini session'dan al
+$musteri_isim = getSessionData('musteri_isim');
+$email = getSessionData('email');
+$telno = getSessionData('telno');
+$ucak_inis = getSessionData('ucak_inis');
+$ucus_no = getSessionData('ucus_no');
+$otel = getSessionData('otel');
+
+// Yolcu bilgilerini session'dan al
+$yolcu_bilgileri = [];
+for($i = 1; $i <= intval($kisiler); $i++){
+    $yolcu_bilgileri[$i] = [
+        'isim' => getSessionData("yolcu$i"),
+        'kimlik' => getSessionData("passno$i")
+    ];
+}
 
 $sql = "SELECT foto_yolu FROM arabalar WHERE id = $car_id";
 $result = $conn->query($sql);
@@ -43,6 +86,9 @@ if ($result && $result->num_rows > 0) {
 
 <!--Forms-->
 <div class="main">
+  <div style="margin-bottom: 20px;">
+    <a href="arabalar.php" class="back-button">Geri Dön</a>
+  </div>
   <div class="forms">
     <!--Personel-->
     <form id="reservation" action="odeme.php" method="POST">
@@ -55,15 +101,15 @@ if ($result && $result->num_rows > 0) {
       <div class="personelForms">
         <div class="column">
           <label>İsim <br></label>
-          <input type="text" name="musteri_isim" placeholder="Ad Soyad" value="" required>
+          <input type="text" name="musteri_isim" placeholder="Ad Soyad" value="<?= htmlspecialchars($musteri_isim) ?>" required>
         </div>
         <div class="column">
           <label>E-posta <br></label>
-          <input type="email" name="email" placeholder="E-Posta" value="" required>
+          <input type="email" name="email" placeholder="E-Posta" value="<?= htmlspecialchars($email) ?>" required>
         </div>  
         <div class="column">
           <label>Tel-No <br></label>
-          <input type="tel" name="telno" placeholder="Tel-No" value="" required>
+          <input type="tel" name="telno" placeholder="Tel-No" value="<?= htmlspecialchars($telno) ?>" required>
         </div>
       </div>
       <!--About Arrive-->
@@ -71,15 +117,15 @@ if ($result && $result->num_rows > 0) {
           <div class="About-Arrive">
             <div class="column">
               <label>Uçak iniş Tarih/Saat <br></label>
-              <input type="datetime-local" name="ucak_inis" value="" required>
+              <input type="datetime-local" name="ucak_inis" value="<?= htmlspecialchars($ucak_inis) ?>" required>
             </div>
             <div class="column">
              <label>Uçuş Numarası <br></label>
-             <input type="text" name="ucus_no" value="">
+             <input type="text" name="ucus_no" value="<?= htmlspecialchars($ucus_no) ?>">
             </div>
             <div class="column">
               <label>Otel Adı <br></label>
-             <input type="text" placeholder="Otel adı" name="otel" value="">
+             <input type="text" placeholder="Otel adı" name="otel" value="<?= htmlspecialchars($otel) ?>">
             </div>
           </div>  
       <!--Passengers-->
@@ -89,11 +135,11 @@ if ($result && $result->num_rows > 0) {
       <div class="passengerİnfo">
         <div class="column"> 
           <label>Ad Soyad <br></label>
-          <input type="text" name="yolcu<?php echo "$i";?>" placeholder="Ad Soyad" value="" required>
+          <input type="text" name="yolcu<?php echo "$i";?>" placeholder="Ad Soyad" value="<?= htmlspecialchars($yolcu_bilgileri[$i]['isim']) ?>" required>
         </div>
         <div class="column"> 
           <label>Kimlik/Pasaport No <br></label>
-          <input type="number" name="passno<?php echo "$i";?>" required>
+          <input type="number" name="passno<?php echo "$i";?>" value="<?= htmlspecialchars($yolcu_bilgileri[$i]['kimlik']) ?>" required>
         </div>
       </div>
       <?php }?>

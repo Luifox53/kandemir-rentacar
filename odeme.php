@@ -1,25 +1,76 @@
 <?php
-session_start();
+require 'includes/session_manager.php';
+initSession();
 
 require 'includes/db_connect.php';
 
-$foto_yolu = $_POST['foto_yolu'];
-$car_id = $_POST['car_id'] ?? '';
-$kisiler = $_POST["kisiler"] ?? "";
-$nereye = $_POST['nereye'] ?? '';
-$fiyat = $_POST['fiyat'] ?? '';
-$musteri_isim = $_POST['musteri_isim'] ?? '';
-$email = $_POST['email'] ?? '';
-$telno = $_POST['telno'] ?? '';
-$ucak_inis = $_POST['ucak_inis'] ?? '';
-$ucus_no = $_POST['ucus_no'] ?? '';
-$otel = $_POST['otel'] ?? '';
+// Session süresi dolmuşsa uyarı ver
+if (isset($_SESSION['session_expired'])) {
+    unset($_SESSION['session_expired']);
+    echo "<script>alert('Oturum süresi doldu. Lütfen baştan başlayın.'); window.location.href='index.php';</script>";
+    exit;
+}
+
+// POST verilerini kontrol et ve session'a kaydet
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['musteri_isim'])) {
+    $foto_yolu = $_POST['foto_yolu'] ?? '';
+    $car_id = $_POST['car_id'] ?? '';
+    $kisiler = $_POST["kisiler"] ?? '';
+    $nereye = $_POST['nereye'] ?? '';
+    $fiyat = $_POST['fiyat'] ?? '';
+    $musteri_isim = $_POST['musteri_isim'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $telno = $_POST['telno'] ?? '';
+    $ucak_inis = $_POST['ucak_inis'] ?? '';
+    $ucus_no = $_POST['ucus_no'] ?? '';
+    $otel = $_POST['otel'] ?? '';
+    
+    // Form verilerini session'a kaydet
+    setSessionData('foto_yolu', $foto_yolu);
+    setSessionData('musteri_isim', $musteri_isim);
+    setSessionData('email', $email);
+    setSessionData('telno', $telno);
+    setSessionData('ucak_inis', $ucak_inis);
+    setSessionData('ucus_no', $ucus_no);
+    setSessionData('otel', $otel);
+    
+    // Yolcu bilgilerini kaydet
+    $kisilerint = intval($kisiler);
+    for($i = 1; $i <= $kisilerint; $i++){
+        $yolcu_isim = isset($_POST["yolcu$i"]) ? trim($_POST["yolcu$i"]) : '';
+        $kimlik_no = isset($_POST["passno$i"]) ? trim($_POST["passno$i"]) : '';
+        setSessionData("yolcu$i", $yolcu_isim);
+        setSessionData("passno$i", $kimlik_no);
+    }
+    
+    // POST sonrası yönlendirme (PRG pattern)
+    header("Location: odeme.php");
+    exit;
+}
+
+// GET isteği - session'dan verileri al
+$foto_yolu = getSessionData('foto_yolu');
+$car_id = getSessionData('car_id');
+$kisiler = getSessionData('kisiler');
+$nereye = getSessionData('nereye');
+$fiyat = getSessionData('fiyat');
+$musteri_isim = getSessionData('musteri_isim');
+$email = getSessionData('email');
+$telno = getSessionData('telno');
+$ucak_inis = getSessionData('ucak_inis');
+$ucus_no = getSessionData('ucus_no');
+$otel = getSessionData('otel');
+
 $yolcular = [];
-$kisilerint = intval($_POST['kisiler']);
+$kisilerint = intval($kisiler);
 
 for($i = 1; $i <= $kisilerint; $i++){
-    $yolcu_isim = isset($_POST["yolcu$i"]) ? trim($_POST["yolcu$i"]) : '';
-    $kimlik_no = isset($_POST["passno$i"]) ? trim($_POST["passno$i"]) : '';
+    $yolcu_isim = isset($_POST["yolcu$i"]) ? trim($_POST["yolcu$i"]) : getSessionData("yolcu$i");
+    $kimlik_no = isset($_POST["passno$i"]) ? trim($_POST["passno$i"]) : getSessionData("passno$i");
+
+    // Session'a kaydet
+    setSessionData("yolcu$i", $yolcu_isim);
+    setSessionData("passno$i", $kimlik_no);
 
     if($yolcu_isim != ''){
         $yolcular[] = [
@@ -54,6 +105,9 @@ for($i = 1; $i <= $kisilerint; $i++){
 <?php include 'includes/progress_bar.php'; ?>
 
 <!--Content-->
+<div style="margin: 20px;">
+  <a href="rezervasyon.php" class="back-button" style="background: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">← Geri Dön</a>
+</div>
 
 <div class="flex">
   <div class="parent">

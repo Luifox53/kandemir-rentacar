@@ -1,0 +1,167 @@
+body{
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    background-color: rgb(249, 249, 249);
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(44, 62, 80);
+}
+
+.card{
+    width: 800px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.card h1{
+    color: white;
+    border-radius: 12px;
+    padding: 4px;
+    background-color: rgb(76, 175, 80);
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-infos{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.customer-info, .reservation-info{
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    border: 2px solid rgb(76, 175, 80);
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.1);
+}
+
+
+.customer-info h3, .reservation-info h3{
+    color: rgb(44, 62, 80);
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.reservation-info{
+    width: 60%;
+}
+
+.reservation-info h3{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.flex{
+    display: flex;
+    gap: 15px;
+}
+
+.left-infos{
+    width: 40%;
+}
+
+.right-infos{
+    width: 60%;
+}
+
+.left-infos p, .right-infos p, .customer-info p{
+    margin: 6px 0;
+    padding: 8px 12px;
+    background: rgba(76, 175, 80, 0.05);
+    border-radius: 4px;
+    border-left: 3px solid rgb(76, 175, 80);
+    font-weight: 400;
+    color: rgb(44, 62, 80);
+}
+
+.passengers{
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    border: 2px solid rgb(76, 175, 80);
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.1);
+}
+
+.passengers h3{
+    color: rgb(44, 62, 80);
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.passengers-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.passenger-card{
+    width: 31%;
+    background-color: rgb(248, 249, 250);
+    border-radius: 6px;
+    padding: 12px;
+    box-shadow: 0 3px 6px rgba(44, 62, 80, 0.2);
+    color: white;
+    border: 1px solid rgb(76, 175, 80);
+    box-sizing: border-box;
+}
+
+.passenger-number{
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9em;
+    margin-bottom: 8px;
+    padding: 6px;
+    background: rgb(76, 175, 80);
+    border-radius: 4px;
+    color: white;
+}
+
+.passenger-infos p{
+    margin: 4px 0;
+    font-size: 0.85em;
+    background-color: white;
+    padding: 4px 6px;
+    border-radius: 3px;
+    border: none;
+    color: black;
+}
+@media (max-width:768px){
+    .card h1{
+        font-size: 20px;
+        margin: 5px;
+        margin-bottom: 10px;
+    }
+    .top-infos{
+        flex-direction: column;
+    }
+    .reservation-info{
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .customer-info{
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .passengers-box{
+        justify-content: center;
+    }
+    .passenger-card{
+    width: 90%;
+    }
+}

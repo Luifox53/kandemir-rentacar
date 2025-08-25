@@ -1,7 +1,11 @@
 <?php
-session_start();
+require 'includes/session_manager.php';
+initSession();
 
 require 'includes/db_connect.php';
+
+// Rezervasyon tamamlandı - session'ı temizle
+completeReservation();
 
 $car_id = $_POST['car_id'] ?? '';
 $kisiler = $_POST["kisiler"] ?? "";
@@ -39,41 +43,57 @@ if ($result && $result->num_rows > 0) {
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>Rezervasyon Onayı</title>
-<link rel="stylesheet" href="assets/css/rez_done.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezervasyon Tamamlandı</title>
+    <link rel="stylesheet" href="assets/css/rezdone.css">
 </head>
 <body>
 
 <div class="card">
-    <h2>Rezervasyonunuz Başarıyla Oluşturuldu!</h2>
+    <h1>Rezervasyon Tamamlandı</h1>
 
-    <div class="section">
-        <h4>Müşteri Bilgileri</h4>
-        <p><strong>İsim:</strong> <?php echo $musteri_isim; ?></p>
-        <p><strong>E-posta:</strong> <?php echo $email; ?></p>
-        <p><strong>Telefon:</strong> <?php echo $telno; ?></p>
+    <div class="top-infos">
+        <div class="customer-info">
+            <h3>Müşteri Bilgileri</h3>
+            <p>İsim: <?php echo $musteri_isim; ?></p>
+            <p>E-Posta: <?php echo $email; ?></p>
+            <p>Telefon: <?php echo $telno; ?></p>
+        </div>
+        <div class="reservation-info">
+            <h3>Rezervasyon Detayları</h3>
+            <div class="flex">
+                <div class="left-infos">
+                    <p>Araç: <?php echo $araba_ismi; ?></p>
+                    <p>Kişi Sayısı: <?php echo $kisiler; ?></p>
+                    <p>Fiyat: <?php echo $fiyat; ?> TL</p>
+                    <p>Nereden: Antalya Havalimanı AYT</p>
+                    <p>Nereye: <?php echo $nereye; ?></p>
+                </div>
+                <div class="right-infos">
+                    <p>Uçak Varış: <?php echo $ucak_inis; ?></p>
+                    <p>Uçuş No: <?php echo $ucus_no; ?></p>
+                    <p>Otel: <?php echo $otel; ?></p>
+                    <p>Ödeme Şekli: <?php echo $paymentOption; ?></p>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="section">
-        <h4>Rezervasyon Detayları</h4>
-        <p><strong>Araç ID:</strong> <?php echo $araba_ismi; ?></p>
-        <p><strong>Kişi Sayısı:</strong> <?php echo $kisiler; ?></p>
-        <p><strong>Fiyat:</strong> <?php echo $fiyat; ?> TL</p>
-        <p><strong>Nereden:</strong> Antalya Havalimanı AYT</p>
-        <p><strong>Nereye:</strong> <?php echo $nereye; ?></p>
-        <p><strong>Uçak Varış:</strong> <?php echo $ucak_inis; ?></p>
-        <p><strong>Uçuş No:</strong> <?php echo $ucus_no; ?></p>
-        <p><strong>Otel:</strong> <?php echo $otel; ?></p>
-        <p><strong>Ödeme şekli: <?php echo $paymentOption; ?> </strong></p>
-    </div>
-
-    <div class="section">
-        <h4>Yolcular</h4>
-        <?php foreach($yolcular as $y){ ?>
-            <p><strong>İsim:</strong> <?php echo $y['yolcu_isim']; ?> | <strong>Kimlik:</strong> <?php echo $y['kimlik_no']; ?></p>
-        <?php } ?>
-    </div>
+    <div class="passengers">
+        <h3>Yolcular</h3>
+        <div class="passengers-box">
+            <?php foreach($yolcular as $index => $y){ ?>
+            <div class="passenger-card">
+                <div class="passenger-number">Yolcu <?php echo ($index + 1); ?></div>
+                <div class="passenger-infos">
+                    <p>İsim: <?php echo $y['yolcu_isim']; ?></p>
+                    <p>Kimlik: <?php echo $y['kimlik_no']; ?></p>
+                </div>
+            </div>
+            <?php } ?>
+        </div>
+    </div>  
 </div>
 
 </body>
