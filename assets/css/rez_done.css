@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    width: 400px;
+}
+
+.card h2 {
+    color: #4CAF50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card p {
+    margin: 8px 0;
+}
+
+.card .section {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}

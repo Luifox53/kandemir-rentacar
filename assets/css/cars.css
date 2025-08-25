@@ -38,13 +38,9 @@
 .car-img {
   flex: 0 0 200px;
   height: 120px;
-  background-color: #ccc;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: #ccc center/cover no-repeat;
   border-radius: 8px;
 }
-
 
 .car-infobox {
   flex: 1;
@@ -104,6 +100,7 @@
     width: 100%;
   }
   .main h1{
-    margin-top: 50px;
+    margin-top: 70px;
+    margin-bottom: 20px;
   }
 }

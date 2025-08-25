@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-include 'db_connect.php';
+require 'includes/db_connect.php';
 
-$kisiler = $_GET["kisiler"] ?? "";
-$nereye = $_GET['nereye'] ?? '';
+$kisiler = $_POST["kisiler"] ?? "";
+$nereye = $_POST['nereye'] ?? '';
 
 $lokasyon_fiyat = [];
 $sql2 = "SELECT lokasyon, fiyat FROM lokasyonlar";
@@ -17,8 +17,6 @@ if ($result2 && $result2->num_rows > 0) {
 
 $sql = "SELECT id, isim, foto_yolu, kisi_alani FROM arabalar";
     $result = $conn->query($sql);
-
-
 ?>
 
 
@@ -30,33 +28,19 @@ $sql = "SELECT id, isim, foto_yolu, kisi_alani FROM arabalar";
     <title>Arabalar</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/cars.css">
+    <link rel="stylesheet" href="assets/css/progress-bar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.7.0/css/flag-icons.min.css">
 
 </head>
 <body>
-<!--WhatsApp button-->
-<a href="https://wa.me/905323746253" target="_blank" id="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+  
+<!-- Header -->
+<?php include 'includes/header.php'; ?>
 
-<!--Header-->
-<header>
-    <div class="logo"></div>
-    <h1 href="index.php" class="headertext"><a href="index.php">Antalya Transfer</a></h1>
-    <nav>
-      <a class="link" href="sss.php">SSS</a>
-      <a class="link" href="lokasyonlar.php">Lokasyonlar</a>
-      <a class="link" href="iletisim.php">İletişim</a>
-      <div id="dropdown-toggle">
-        <i class="fi fi-tr"></i> Türkçe
-        <div id="dropdown-menu">
-          <a href=""><i class="fi fi-ru"></i>Русский</a>
-          <a href=""><i class="fi fi-gb"></i>English</a>
-          <a href=""><i class="fi fi-de"></i>Deutsch</a>
-        </div>
-      </div>
+<!--Progress Bar-->
+<?php include 'includes/progress_bar.php'; ?>
 
-    </nav>
-</header>
 <!--Content-->
 <div class="main">
   <h1>Mevcut Arabalar</h1>
@@ -78,15 +62,16 @@ $sql = "SELECT id, isim, foto_yolu, kisi_alani FROM arabalar";
               <!-- Araç bilgileri -->
               <div class="car-infobox">
                 <h3><?= htmlspecialchars($row['isim']) ?></h3>
+                <div><?php echo "AYT - $nereye"?></div>
                 <div><?= htmlspecialchars($row['kisi_alani']) ?> kişi</div>
               </div>
 
               <!-- Rezervasyon butonu ve fiyat -->
               <div class="car-pricebox">
                 <?= is_numeric($fiyat) ? $fiyat . ' €' : $fiyat ?>
-                <form action="rezervasyon.php" method="GET">
+                <form action="rezervasyon.php" method="POST">
                   <input type="hidden" name="car_id" value="<?= htmlspecialchars($row['id']) ?>">
-                  <input type="hidden" name="kisiler" value="<?= htmlspecialchars($_GET['kisiler'] ?? '') ?>">
+                  <input type="hidden" name="kisiler" value="<?= htmlspecialchars($_POST['kisiler'] ?? '') ?>">
                   <input type="hidden" name="nereye" value="<?= htmlspecialchars($nereye) ?>">
                   <input type="hidden" name="fiyat" value="<?= htmlspecialchars($fiyat) ?>">
                   <button type="submit">Arabayı Seç</button>
@@ -103,36 +88,9 @@ $sql = "SELECT id, isim, foto_yolu, kisi_alani FROM arabalar";
   </div>
 </div>
 
-<!--Footer-->
-<footer>
-    <div class="footer-container">
-      <div class="footer-column">
-        <h3>İletişim</h3>
-        <ul>
-          <li><a href="#">Telefon: +90 555 555 5555</a></li>
-          <li><a href="#">E-posta: info@kandemirrentacar.com</a></li>
-          <li><a href="#">Adres: İstanbul, Türkiye</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h3>Kurumsal</h3>
-        <ul>
-          <li><a href="#">Hakkımızda</a></li>
-          <li><a href="#">Kariyer</a></li>
-          <li><a href="#">Basın</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h3>Bizi Takip Edin</h3>
-        <ul>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">Instagram</a></li>
-        </ul>
-      </div>
-    </div>
-  </footer>
+<!-- Footer -->
+<?php include 'includes/footer.php'; ?>
 
-    <script src="script.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 </html>

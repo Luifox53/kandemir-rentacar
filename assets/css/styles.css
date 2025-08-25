@@ -29,7 +29,7 @@ WhatsApp button
   align-items: center;
   text-decoration: none;
   font-size: xx-large;
-  transition: left 0.3s ease; /* kenara giderken yumuşak animasyon */
+  transition: bottom 0.2s ease;
 }
 
 #whatsapp-float:hover{
@@ -90,18 +90,21 @@ left: 0;
 #dropdown-toggle{
   color: black;
   cursor: pointer;
+
 } 
 #dropdown-menu{
   position: absolute;
   display: none;
   flex-direction: column;
   z-index: 2;
-  background-color: white;
+  background-color: rgb(240, 240, 240);
 }
 #dropdown-menu a{ 
   height: 30px;
   display: flex;
   align-items: center;
+  box-sizing: border-box;
+  padding: 4px;
 }
 #dropdown-menu a:hover{
 transition: background-color 0.2s;
@@ -201,4 +204,20 @@ footer {
     .logo{
         background-size: contain;
     }
+    nav .link{
+      padding-bottom: 5px;
+      padding-top: 5px;
+    }
+    #dropdown-toggle{
+        box-sizing: border-box;
+        padding-top: 5px;
+    }
+    .footer-container{
+      gap: 5px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1016px) {
+nav{
+  width: 40%;
+}
 }

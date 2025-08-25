@@ -1,9 +1,13 @@
 h1{
     text-align: center;
 }
+.mg-top{
+    margin-top: 60px;
+}
 .main{
     width: 90%;
-    justify-self: center;
+    margin-right: auto;
+    margin-left: auto;
     display: flex;
     flex-wrap: wrap;
     row-gap: 30px;

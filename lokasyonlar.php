@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include 'db_connect.php';
+include 'includes/db_connect.php';
 
 $sql = "SELECT lokasyon, fiyat, foto_yolu FROM lokasyonlar";
     $result = $conn->query($sql);
@@ -21,28 +21,9 @@ $sql = "SELECT lokasyon, fiyat, foto_yolu FROM lokasyonlar";
 
 </head>
 <body>
-<!--WhatsApp button-->
-<a href="https://wa.me/905323746253" target="_blank" id="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
 
-    <!--Header-->
-<header>
-    <div class="logo"></div>
-    <h1 class="headertext"><a href="index.php">Antalya Transfer</a></h1>
-    <nav>
-      <a class="link" href="sss.php">SSS</a>
-      <a class="link" href="lokasyonlar.php">Lokasyonlar</a>
-      <a class="link" href="iletisim.php">İletişim</a>
-      <div id="dropdown-toggle">
-        <i class="fi fi-tr"></i> Türkçe
-        <div id="dropdown-menu">
-          <a href=""><i class="fi fi-ru"></i>Русский</a>
-          <a href=""><i class="fi fi-gb"></i>English</a>
-          <a href=""><i class="fi fi-de"></i>Deutsch</a>
-        </div>
-      </div>
-
-    </nav>
-</header>
+<!-- Header -->
+<?php include 'includes/header.php'; ?>
 
 <!--Locations-->
 <?php
@@ -68,35 +49,8 @@ if ($result && $result->num_rows > 0) {
 ?>
 
 <!--Footer-->
-<footer>
-    <div class="footer-container">
-        <div class="footer-column">
-            <h3>İletişim</h3>
-            <ul>
-                <li><a href="#">📞 +90 555 555 5555</a></li>
-                <li><a href="#">✉ info@kandemirrentacar.com</a></li>
-                <li><a href="#">📍 İstanbul, Türkiye</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h3>Kurumsal</h3>
-            <ul>
-                <li><a href="#">Hakkımızda</a></li>
-                <li><a href="#">Kariyer</a></li>
-                <li><a href="#">Basın</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h3>Bizi Takip Edin</h3>
-            <ul class="socials">
-                <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-                <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-            </ul>
-        </div>
-    </div>
-</footer>
+<?php include 'includes/footer.php'; ?>
 
-<script src="script.js"></script>
+<script src="scripts/script.js"></script>
 </body>
 </html>
