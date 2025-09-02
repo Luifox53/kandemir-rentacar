@@ -9,7 +9,7 @@ return [
     'footer_istanbul' => 'İstanbul, Türkiye',
     'footer_kurumsal' => 'Kurumsal',
     'footer_hakkimizda' => 'Hakkımızda',
-    'footer_kariyer' => 'Kariyer',
+    'footer_gizlilik_politikasi' => 'Gizlilik Politikası',
     'footer_basin' => 'Basın',
     'footer_bizi_takip' => 'Bizi Takip Edin',
 
@@ -68,4 +68,90 @@ return [
 
     'hakkinda_baslik' => 'Hakkımızda',
     'hakkinda_aciklama' => 'Seyahatinizi konforlu, güvenli ve hızlı hale getirmek için buradayız. VIP transfer hizmetimizle, sizi havalimanından otelinize veya istediğiniz noktaya lüks araçlarımız ve deneyimli şoförlerimizle taşıyoruz. Zamanınızı değerli biliyor ve her yolculuğu kusursuz bir deneyime dönüştürmeyi hedefliyoruz. Müşteri memnuniyeti ve güvenliği bizim için önceliktir. Modern araç filomuz, profesyonel ekibimiz ve esnek hizmet anlayışımızla, her transferinizde kendinizi özel hissetmenizi sağlıyoruz.',
+
+    // Butonlar ve Navigasyon
+    'btn_geri_don' => 'Geri Dön',
+    'btn_arabayı_sec' => 'Arabayı Seç',
+    'btn_rezervasyon_yap' => 'Rezervasyon Yap',
+
+    // Form placeholder'ları
+    'placeholder_lokasyon_sec' => 'Bir lokasyon seçiniz',
+    'placeholder_otel_adi' => 'Otel adı',
+    'placeholder_ad_soyad' => 'Ad Soyad',
+
+    // Sayfa başlıkları
+    'sayfa_mevcut_arabalar' => 'Mevcut Arabalar',
+    'sayfa_kisisel_bilgiler' => 'Kişisel Bilgiler',
+    'sayfa_varis_bilgileri' => 'Varış Bilgileri',
+    'sayfa_yolcu' => 'Yolcu',
+    'sayfa_ad_soyad' => 'Ad Soyad',
+    'sayfa_kimlik_pasaport' => 'Kimlik/Pasaport No',
+    'sayfa_ucak_inis' => 'Uçak iniş Tarih/Saat',
+    'sayfa_ucus_numarası' => 'Uçuş Numarası',
+    'sayfa_otel_adi' => 'Otel Adı',
+
+    // Rezervasyon tamamlandı sayfası
+    'rez_tamam_baslik' => 'Rezervasyon Tamamlandı',
+    'rez_tamam_musteri_bilgileri' => 'Müşteri Bilgileri',
+    'rez_tamam_rezervasyon_detaylari' => 'Rezervasyon Detayları',
+    'rez_tamam_isim' => 'İsim',
+    'rez_tamam_eposta' => 'E-Posta',
+    'rez_tamam_telefon' => 'Telefon',
+    'rez_tamam_arac' => 'Araç',
+    'rez_tamam_kisi_sayisi' => 'Kişi Sayısı',
+    'rez_tamam_fiyat' => 'Fiyat',
+    'rez_tamam_nereden' => 'Nereden',
+    'rez_tamam_nereye' => 'Nereye',
+    'rez_tamam_ucak_varis' => 'Uçak Varış',
+    'rez_tamam_ucus_no' => 'Uçuş No',
+    'rez_tamam_otel' => 'Otel',
+    'rez_tamam_odeme_sekli' => 'Ödeme Şekli',
+    'rez_tamam_yolcular' => 'Yolcular',
+    'rez_tamam_yolcu_no' => 'Yolcu',
+    'rez_tamam_kimlik' => 'Kimlik',
+
+    // Hata mesajları
+    'hata_arac_bulunamadi' => 'Mevcut araç bulunamadı.',
+
+    // Kişi sayısı
+    'kisi_birimi' => 'kişi',
+
+    // E-posta şablonu metinleri
+    'email_rezervasyon_onay' => 'Rezervasyon Onayı - Antalya Transfer',
+    'email_yeni_rezervasyon' => 'Yeni Rezervasyon',
+    'email_musteri_bilgileri' => 'Müşteri Bilgileri',
+    'email_transfer_detaylari' => 'Transfer Detayları',
+    'email_ucus_bilgileri' => 'Uçuş Bilgileri',
+    'email_yolcu_bilgileri' => 'Yolcu Bilgileri',
+    'email_onemli_notlar' => 'Önemli Notlar',
+    'email_tesekkurler' => 'Teşekkürler',
+    'email_iyi_yolculuklar' => 'İyi yolculuklar dileriz!',
+    'email_havalimani' => 'Antalya Havalimanı (AYT)',
+    'email_belirtilmedi' => 'Belirtilmedi',
+    'email_otomatik_mesaj' => 'Bu e-posta otomatik olarak gönderilmiştir. Lütfen yanıtlamayınız.',
+    'email_transfer_notlari' => [
+        'Transfer işleminiz için uçuş bilgilerinizi takip ediyoruz.',
+        'Uçuş rötarı durumunda ek ücret almadan bekleme sağlanır.',
+        'İptal işlemleri için en az 12 saat önceden bildirimde bulununuz.',
+        'Sorularınız için: +90 (534) 017 28 15 numarasından bize ulaşabilirsiniz.'
+    ],
+
+    // Rez_tamam sayfa metinleri
+    'rez_tamam_sayfa_baslik' => 'Rezervasyon Tamamlandı',
+    'rez_tamam_email_basarili' => 'E-posta gönderildi!',
+    'rez_tamam_email_mesaj' => 'Rezervasyon onayınız {email} adresine gönderilmiştir.',
+    'rez_tamam_email_hata' => 'E-posta gönderilemedi!',
+    'rez_tamam_email_hata_mesaj' => 'Rezervasyon onayınız e-posta olarak gönderilemedi. Lütfen bu sayfayı kaydediniz.',
+    'btn_ana_sayfa' => 'Ana Sayfaya Dön',
+    
+    // Captcha hata mesajları
+    'captcha_error_message' => '⚠️ Lütfen önce "Ben robot değilim" kutucuğunu işaretleyin!',
+    
+    // Gizlilik Politikası
+    'gizlilik_politikasi_baslik' => 'Gizlilik Politikası',
+    'gizlilik_politikasi_icerik' => 'Antalya Transfer sizin kişisel bilgilerinizin gizliliği ile ilgili önlemleri alır ve kişisel bilgilerin her zaman güvende olmasını garanti eder. Rezervasyon sitemizden gelen müşteri bilgileri hiç bir zaman ticari amaç ile kullanılmaz ve hiç bir şekilde ticari bir malzeme konusu yapılamaz. Antalya Transfer müşterilerinin kimlik bilgilerini hiç bir zaman deşifre etmez. Sadece emniyet ve kamusal idareden talep geldiği durumlarda ve-veya kişilerin kendi istekleri ile doğrultusunda açıklama yapılabilir.',
+    
+    // İletişim Formu
+    'iletisim_mesaj_basarili' => 'Mesajınız başarıyla gönderildi!',
+    'iletisim_mesaj_hata' => 'Mesaj gönderilemedi. Lütfen tekrar deneyin.',
 ];

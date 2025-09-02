@@ -17,67 +17,66 @@
 
 <!--FAQ-->
 <main class="wrap" id="faq-root">
-    <h1 class="title">Sık Sorulan Sorular</h1>
+    <h1 class="title"><?= translate('sss_baslik') ?></h1>
 
     <section class="faq" role="tablist" aria-label="SSS">
       <!-- ÖRNEK MADDELER -->
       <article class="item" aria-expanded="false">
         <button class="question" role="tab" aria-expanded="false" aria-controls="p1" id="q1">
-          Havalimanından otelinize transfer kaç dakika sürer?
+          <?= translate('sss_havaliman_sure') ?>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 4h2v16h-2zM4 11h16v2H4z"/></svg>
         </button>
         <div class="panel" role="region" id="p1" aria-labelledby="q1" aria-hidden="true">
           <div class="panel-inner">
-            Güzergâha bağlı olarak değişir. Antalya Havalimanı → Belek ortalama <strong>35–45 dk</strong> sürer. Trafik yoğunluğu, yol çalışması ve mola gibi etkenler süreyi değiştirebilir.
+            <?= translate('sss_havaliman_sure_cevap') ?>
           </div>
         </div>
       </article>
 
       <article class="item" aria-expanded="false">
         <button class="question" role="tab" aria-expanded="false" aria-controls="p2" id="q2">
-          Ödeme yöntemleriniz nelerdir?
+          <?= translate('sss_odeme_yontemleri') ?>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 4h2v16h-2zM4 11h16v2H4z"/></svg>
         </button>
         <div class="panel" role="region" id="p2" aria-labelledby="q2" aria-hidden="true">
           <div class="panel-inner">
-            Nakit, kredi/banka kartı ve online ödeme kabul ediyoruz. Kurumsal müşteriler için fatura kesimi yapılır.
+            <?= translate('sss_odeme_yontemleri_cevap') ?>
           </div>
         </div>
       </article>
 
       <article class="item" aria-expanded="false">
         <button class="question" role="tab" aria-expanded="false" aria-controls="p3" id="q3">
-          İptal ve iade koşulları nelerdir?
+          <?= translate('sss_iptal_iade') ?>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 4h2v16h-2zM4 11h16v2H4z"/></svg>
         </button>
         <div class="panel" role="region" id="p3" aria-labelledby="q3" aria-hidden="true">
           <div class="panel-inner">
-            Transfer saatinden <strong>12 saat önce</strong>ye kadar ücretsiz iptal edebilirsiniz. Daha geç iptallerde tek yön ücretinin %50’si yansıtılır.
+            <?= translate('sss_iptal_iade_cevap') ?>
           </div>
         </div>
       </article>
 
       <article class="item" aria-expanded="false">
         <button class="question" role="tab" aria-expanded="false" aria-controls="p4" id="q4">
-          Antalya Havalimanı'nda şoförümü nerede bulabilirim?
+          <?= translate('sss_cocuk_koltugu') ?>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 4h2v16h-2zM4 11h16v2H4z"/></svg>
         </button>
         <div class="panel" role="region" id="p4" aria-labelledby="q4" aria-hidden="true" >
           <div class="panel-inner">
-           Şoförünüz, Antalya Havalimanı terminal çıkışında, üzerinde adınızın yazılı olduğu bir tabela ile sizi bekleyecektir.
-           Detaylı talimatlar rezervasyon onayınızda yer alacaktır.
+           <?= translate('sss_cocuk_koltugu_cevap') ?>
           </div>
         </div>
       </article>
 
       <article class="item" aria-expanded="false">
         <button class="question" role="tab" aria-expanded="false" aria-controls="p5" id="q5">
-          Uçuşum rötar yaparsa bekler misiniz?
+          <?= translate('sss_rötar') ?>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 4h2v16h-2zM4 11h16v2H4z"/></svg>
         </button>
         <div class="panel" role="region" id="p5" aria-labelledby="q5" aria-hidden="true">
           <div class="panel-inner">
-            Uçuş bilgilerinizi takip ediyoruz; rötarlarda ek ücret almadan bekleme sağlanır.
+            <?= translate('sss_rötar_cevap') ?>
           </div>
         </div>
       </article>

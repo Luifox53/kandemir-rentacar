@@ -22,13 +22,14 @@ $sql = "SELECT lokasyon, fiyat, foto_yolu FROM lokasyonlar";
 </head>
 <body>
 
+
 <!-- Header -->
 <?php include 'includes/header.php'; ?>
 
 <!--Locations-->
 <?php
 if ($result && $result->num_rows > 0) {
-    echo '<h1>Lokasyonlar</h1>';
+    echo '<h1>' . translate('header_lokasyonlar') . '</h1>';
     echo '<div class="main">';
 
     while ($row = $result->fetch_assoc()) {

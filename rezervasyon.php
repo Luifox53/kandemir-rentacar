@@ -16,12 +16,14 @@ $foto_yolu = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car_id'])) {
     $car_id = $_POST['car_id'] ?? '';
     $kisiler = $_POST["kisiler"] ?? '';
+    $nereden = $_POST['nereden'] ?? '';
     $nereye = $_POST['nereye'] ?? '';
     $fiyat = $_POST['fiyat'] ?? '';
     
     // Session'a kaydet
     setSessionData('car_id', $car_id);
     setSessionData('kisiler', $kisiler);
+    setSessionData('nereden', $nereden);
     setSessionData('nereye', $nereye);
     setSessionData('fiyat', $fiyat);
     
@@ -33,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car_id'])) {
 // GET isteği - session'dan verileri al
 $car_id = getSessionData('car_id');
 $kisiler = getSessionData('kisiler');
+$nereden = getSessionData('nereden');
 $nereye = getSessionData('nereye');
 $fiyat = getSessionData('fiyat');
 
@@ -73,6 +76,40 @@ if ($result && $result->num_rows > 0) {
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/rezervation.css">
     <link rel="stylesheet" href="assets/css/progress-bar.css">
+    
+    <!-- International Telephone Input -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css">
+    <style>
+       .iti {
+            width: 100% !important;
+            min-width: 0;
+        }
+        .iti__country-list {
+            z-index: 9999;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .iti__flag-container {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            padding: 1px;
+        }
+        .iti__selected-flag {
+            z-index: 4;
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0 8px 0 6px;
+            
+        }
+        .iti input[type="tel"] {
+            width: 100% !important;
+            box-sizing: border-box;
+        }
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.7.0/css/flag-icons.min.css">
 </head>
@@ -86,8 +123,11 @@ if ($result && $result->num_rows > 0) {
 
 <!--Forms-->
 <div class="main">
-  <div style="margin-bottom: 20px;">
-    <a href="arabalar.php" class="back-button">Geri Dön</a>
+  <div class="Bbutton-box" style="margin-right: auto; margin-left: 30px;">
+    <a href="arabalar.php" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        <?= translate('btn_geri_don') ?>
+    </a>
   </div>
   <div class="forms">
     <!--Personel-->
@@ -97,48 +137,48 @@ if ($result && $result->num_rows > 0) {
       <input type="hidden" name="nereye" value="<?= htmlspecialchars($nereye) ?>">
       <input type="hidden" name="fiyat" value="<?= htmlspecialchars($fiyat) ?>">
       <input type="hidden" name="foto_yolu" value="<?= htmlspecialchars($foto_yolu) ?>">
-      <h3>Kişisel Bilgiler</h3>
+      <h3><?= translate('sayfa_kisisel_bilgiler') ?></h3>
       <div class="personelForms">
         <div class="column">
-          <label>İsim <br></label>
-          <input type="text" name="musteri_isim" placeholder="Ad Soyad" value="<?= htmlspecialchars($musteri_isim) ?>" required>
+          <label for="musteri_isim"><?= translate('iletisim_ad') ?> <br></label>
+          <input id="musteri_isim" type="text" name="musteri_isim" placeholder="<?= translate('iletisim_ad') ?>" value="<?= htmlspecialchars($musteri_isim) ?>" required>
         </div>
         <div class="column">
-          <label>E-posta <br></label>
-          <input type="email" name="email" placeholder="E-Posta" value="<?= htmlspecialchars($email) ?>" required>
+          <label for="email"><?= translate('iletisim_email') ?> <br></label>
+          <input id="email" type="email" name="email" placeholder="<?= translate('iletisim_email') ?>" value="<?= htmlspecialchars($email) ?>" required>
         </div>  
         <div class="column">
-          <label>Tel-No <br></label>
-          <input type="tel" name="telno" placeholder="Tel-No" value="<?= htmlspecialchars($telno) ?>" required>
+          <label for="telno"><?= translate('iletisim_tel') ?> <br></label>
+          <input id="telno" type="tel" name="telno" placeholder="<?= translate('iletisim_tel') ?>"  value="<?= htmlspecialchars($telno) ?>" required>
         </div>
       </div>
       <!--About Arrive-->
-          <h3>Varış Bilgileri</h3>
+          <h3><?= translate('sayfa_varis_bilgileri') ?></h3>
           <div class="About-Arrive">
             <div class="column">
-              <label>Uçak iniş Tarih/Saat <br></label>
-              <input type="datetime-local" name="ucak_inis" value="<?= htmlspecialchars($ucak_inis) ?>" required>
+              <label for="ucak_inis"><?= translate('sayfa_ucak_inis') ?> <br></label>
+              <input id="ucak_inis" type="datetime-local" name="ucak_inis" value="<?= htmlspecialchars($ucak_inis) ?>" required>
             </div>
             <div class="column">
-             <label>Uçuş Numarası <br></label>
-             <input type="text" name="ucus_no" value="<?= htmlspecialchars($ucus_no) ?>">
+             <label for="ucus_no"><?= translate('sayfa_ucus_numarası') ?> <br></label>
+             <input id="ucus_no" type="text" name="ucus_no" value="<?= htmlspecialchars($ucus_no) ?>">
             </div>
             <div class="column">
-              <label>Otel Adı <br></label>
-             <input type="text" placeholder="Otel adı" name="otel" value="<?= htmlspecialchars($otel) ?>">
+              <label for="otel"><?= translate('sayfa_otel_adi') ?> <br></label>
+             <input id="otel" type="text" placeholder="<?= translate('placeholder_otel_adi') ?>" name="otel" value="<?= htmlspecialchars($otel) ?>">
             </div>
           </div>  
       <!--Passengers-->
       <?php for($i = 1;$i<=$kisiler;$i++){?>
 
-      <h4>Yolcu <?php echo "$i";?></h4>
+      <h4><?= translate('sayfa_yolcu') ?> <?php echo "$i";?></h4>
       <div class="passengerİnfo">
         <div class="column"> 
-          <label>Ad Soyad <br></label>
-          <input type="text" name="yolcu<?php echo "$i";?>" placeholder="Ad Soyad" value="<?= htmlspecialchars($yolcu_bilgileri[$i]['isim']) ?>" required>
+          <label><?= translate('sayfa_ad_soyad') ?> <br></label>
+          <input type="text" name="yolcu<?php echo "$i";?>" placeholder="<?= translate('placeholder_ad_soyad') ?>" value="<?= htmlspecialchars($yolcu_bilgileri[$i]['isim']) ?>" required>
         </div>
         <div class="column"> 
-          <label>Kimlik/Pasaport No <br></label>
+          <label><?= translate('sayfa_kimlik_pasaport') ?> <br></label>
           <input type="number" name="passno<?php echo "$i";?>" value="<?= htmlspecialchars($yolcu_bilgileri[$i]['kimlik']) ?>" required>
         </div>
       </div>
@@ -149,16 +189,16 @@ if ($result && $result->num_rows > 0) {
 
   <div class="transport-info">
     <div class="car-img" style="background-image: url('<?= htmlspecialchars($foto_yolu) ?>');"></div>
-    <h3>Nereden</h3>
-    <p>Antalya Havalimanı</p>
-    <h3>Nereye</h3>
+    <h3><?= translate('anasayfa_nereden') ?></h3>
+    <p><?php echo "{$nereden}"; ?></p>
+    <h3><?= translate('anasayfa_nereye') ?></h3>
     <p><?php echo "{$nereye}"; ?></p>
-    <h3>Kişi Sayısı</h3>
-    <p><?php echo "{$kisiler} kişi"; ?></p>
+    <h3><?= translate('anasayfa_kisi_sayisi') ?></h3>
+    <p><?php echo "{$kisiler} " . translate('kisi_birimi'); ?></p>
     <div class="price-box">
       <h4 class="price"><?php echo "{$fiyat} €"; ?></h4>
     </div>
-    <button class="submit-button" type="submit" form="reservation">Rezervasyon Yap</button>
+    <button class="submit-button" type="submit" form="reservation"><?= translate('btn_rezervasyon_yap') ?></button>
   </div>
 
 </div>
@@ -167,6 +207,57 @@ if ($result && $result->num_rows > 0) {
 <!--Footer-->
 <?php include 'includes/footer.php'; ?>
 
+<!-- International Telephone Input JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const phoneInput = document.querySelector('#telno');
+    
+    const iti = window.intlTelInput(phoneInput, {
+        // Tercih edilen ülkeler (Türkiye, Almanya, Rusya, İngiltere)
+        preferredCountries: ['tr', 'de', 'ru', 'gb'],
+        
+        // Başlangıç ülkesi (Türkiye)
+        initialCountry: 'tr',
+        
+        // Placeholder göster
+        autoPlaceholder: 'off',
+        
+        // Sadece ülke kodları
+        separateDialCode: true,
+        
+        // Ülke arama özelliği
+        searchCountries: true,
+        
+        // Geçerli ülkeler (müşteri kitlen göre)
+        onlyCountries: ['tr', 'de', 'ru', 'gb', 'us', 'fr', 'es', 'it', 'nl', 'be', 'ch', 'at', 'se', 'no', 'dk', 'fi'],
+        
+        // Utility script (otomatik format)
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js"
+    });
+    
+    // Form gönderildiğinde tam numarayı al
+    const form = document.getElementById('reservation');
+    if (form) {
+        form.addEventListener('submit', function() {
+            const fullNumber = iti.getNumber();
+            phoneInput.value = fullNumber;
+        });
+    }
+    
+    // Gerçek zamanlı validasyon
+    phoneInput.addEventListener('input', function() {
+        if (iti.isValidNumber()) {
+            phoneInput.style.border = '2px solid #28a745';
+        } else {
+            phoneInput.style.border = '2px solid #dc3545';
+        }
+    });
+});
+</script>
+
 <script src="scripts/script.js"></script>
+
 </body>
 </html>

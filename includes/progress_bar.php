@@ -16,7 +16,12 @@ $currentStep = $steps[$currentPage] ?? 0;
 <!-- Progress Bar -->
 <div class="progress-container">
   <?php
-  $stepNames = ["Araç Seçimi", "Rezervasyon Detayları", "Ödeme Yöntemi", "Sonuçlandır"];
+  $stepNames = [
+    translate('progress_arac_secimi'), 
+    translate('progress_rez_detaylari'), 
+    translate('progress_odeme_yontemi'), 
+    translate('progress_sonuclandir')
+  ];
 
   foreach ($stepNames as $index => $name):
       $stepNumber = $index + 1;

@@ -1,18 +1,43 @@
 <?php
+require 'includes/session_manager.php';
+initSession();
+require 'includes/email_functions.php';
+
+$success = '';
+$error = '';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $adsoyad = $_POST['adsoyad'];
-    $email = $_POST['email'];
-    $telefon = $_POST['telefon'];
-    $mesaj = $_POST['mesaj'];
+    $adsoyad = $_POST['adsoyad'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $telefon = $_POST['telefon'] ?? '';
+    $mesaj = $_POST['mesaj'] ?? '';
 
-    $to = "mcmuhammet54@gmail.com"; // kendi mail adresin
-    $subject = "İletişim Formu Mesajı";
-    $body = "Ad Soyad: $adsoyad\nE-posta: $email\nTelefon: $telefon\nMesaj: $mesaj";
+    // Form verilerini temizle
+    $adsoyad = trim($adsoyad);
+    $email = trim($email);
+    $telefon = trim($telefon);
+    $mesaj = trim($mesaj);
 
-    if (mail($to, $subject, $body)) {
-        $success = "Mesajınız gönderildi!";
+    // Basit validasyon
+    if (empty($adsoyad) || empty($email) || empty($mesaj)) {
+        $error = translate('iletisim_mesaj_hata');
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = translate('iletisim_mesaj_hata');
     } else {
-        $error = "Mesaj gönderilemedi. Lütfen tekrar deneyin.";
+        // İletişim formu verilerini hazırla
+        $contact_data = [
+            'adsoyad' => $adsoyad,
+            'email' => $email,
+            'telefon' => $telefon,
+            'mesaj' => $mesaj
+        ];
+
+        // SMTP ile email gönder
+        if (sendContactFormEmail($contact_data)) {
+            $success = translate('iletisim_mesaj_basarili');
+        } else {
+            $error = translate('iletisim_mesaj_hata');
+        }
     }
 }
 ?>
@@ -38,26 +63,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- İletişim Formu -->
 <main class="main">
 <section class="forms">
-  <h3>Bize Ulaşın</h3>
+  <h3><?= translate('iletisim_baslik') ?></h3>
   <p>Her türlü soru, öneri ve rezervasyon talepleriniz için aşağıdaki formu doldurabilirsiniz.</p>
-  <?php if (!empty($success)) echo "<p style='color:green;'>$success</p>"; ?>
-  <?php if (!empty($error)) echo "<p style='color:red;'>$error</p>"; ?>
+  <?php if (!empty($success)): ?>
+    <div style="background: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+      <strong>✅ <?= $success ?></strong>
+    </div>
+  <?php endif; ?>
+  <?php if (!empty($error)): ?>
+    <div style="background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+      <strong>⚠️ <?= $error ?></strong>
+    </div>
+  <?php endif; ?>
   <form method="POST" action="">
     <div class="column">
-      <label>Adınız Soyadınız</label>
-      <input type="text" name="adsoyad" placeholder="Adınız Soyadınız" required>
+      <label><?= translate('iletisim_ad') ?></label>
+      <input type="text" name="adsoyad" placeholder="<?= translate('iletisim_ad') ?>" required>
     </div>
     <div class="column">
-      <label>E-posta</label>
-      <input type="email" name="email" placeholder="E-posta adresiniz" required>
+      <label><?= translate('iletisim_email') ?></label>
+      <input type="email" name="email" placeholder="<?= translate('iletisim_email') ?>" required>
     </div>
     <div class="column">
-      <label>Telefon</label>
+      <label><?= translate('iletisim_tel') ?></label>
       <input type="tel" name="telefon" placeholder="05XX XXX XX XX" required>
     </div>
     <div class="column">
-      <label>Mesajınız</label>
-      <textarea name="mesaj" placeholder="Mesajınızı buraya yazın..." rows="5" required></textarea>
+      <label><?= translate('iletisim_mesaj') ?></label>
+      <textarea name="mesaj" placeholder="<?= translate('iletisim_mesaj') ?>..." rows="5" required></textarea>
     </div>
     <button type="submit" class="submit-button">Gönder</button>
 </form>
@@ -65,17 +98,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!-- İletişim Bilgileri -->
 <aside class="contact-info">
-  <h4>İletişim Bilgilerimiz</h4>
-  <p><strong>📞 Telefon:</strong> <a href="tel:+905340172815">+90 (534) 017 28 15</a></p>
-  <p><strong>📧 E-posta:</strong> <a href="mailto:info@antalyatransfer.com">info@antaltatransfer.com</a></p>
-  <p><strong>📍 Adres:</strong> İstanbul, Türkiye</p>
+  <h4><?= translate('iletisim_iletisim_bilgileri') ?></h4>
+  <p><strong>📞 <?= translate('iletisim_telefon') ?></strong> <a href="tel:+905340172815">+90 (534) 017 28 15</a></p>
+  <p><strong>📧 <?= translate('iletisim_email_label') ?></strong> <a href="mailto:antalya.transfer.tr@gmail.com">antalya.transfer.tr@gmail.com</a></p>
+  <p><strong>📍 <?= translate('iletisim_adres') ?></strong> <?= translate('footer_istanbul') ?></p>
 
-  <h4>Çalışma Saatlerimiz</h4>
-  <p>Pazartesi - Cumartesi: 09:00 - 20:00</p>
-  <p>Pazar: 10:00 - 18:00</p>
-  <h4>Bizi Takip Edin</h4>
+  <h4><?= translate('iletisim_calisma_saatleri') ?></h4>
+  <p><?= translate('iletisim_calisma_saatleri_detay') ?></p>
+  <h4><?= translate('iletisim_bizi_takip') ?></h4>
   <p class="social-contact">
-    <a href="#"><i class="fa-brands fa-instagram"></i></a>  
+    <a href="https://www.instagram.com/antalya_rentakar"><i class="fa-brands fa-instagram"></i></a>  
     <a href="#"><i class="fa-brands fa-facebook"></i></a>
   </p>
 </aside>

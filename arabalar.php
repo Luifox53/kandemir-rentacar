@@ -7,10 +7,12 @@ require 'includes/db_connect.php';
 // POST verilerini kontrol et ve session'a kaydet
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $kisiler = $_POST["kisiler"] ?? '';
+    $nereden = $_POST['nereden'] ?? '';
     $nereye = $_POST['nereye'] ?? '';
     
     // Session'a kaydet
     setSessionData('kisiler', $kisiler);
+    setSessionData('nereden', $nereden);
     setSessionData('nereye', $nereye);
     
     // POST sonrası yönlendirme (PRG pattern)
@@ -20,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // GET isteği - session'dan verileri al
 $kisiler = getSessionData('kisiler');
+$nereden = getSessionData('nereden');
 $nereye = getSessionData('nereye');
 
 $lokasyon_fiyat = [];
@@ -59,10 +62,13 @@ $sql = "SELECT id, isim, foto_yolu, kisi_alani FROM arabalar";
 
 <!--Content-->
 <div class="main">
-  <div style="margin-bottom: 20px;">
-    <a href="index.php" class="back-button" style="background: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">← Geri Dön</a>
+  <div class="Bbutton-box">
+    <a href="index.php" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        <?= translate('btn_geri_don') ?>
+    </a>
   </div>
-  <h1>Mevcut Arabalar</h1>
+  <h1><?= translate('sayfa_mevcut_arabalar') ?></h1>
   <div class="container">
 
     <?php 
@@ -81,8 +87,8 @@ $sql = "SELECT id, isim, foto_yolu, kisi_alani FROM arabalar";
               <!-- Araç bilgileri -->
               <div class="car-infobox">
                 <h3><?= htmlspecialchars($row['isim']) ?></h3>
-                <div><?php echo "AYT - $nereye"?></div>
-                <div><?= htmlspecialchars($row['kisi_alani']) ?> kişi</div>
+                <div><?php echo "$nereden - $nereye"?></div>
+                <div>1-<?= htmlspecialchars($row['kisi_alani']) ?></div>
               </div>
 
               <!-- Rezervasyon butonu ve fiyat -->
@@ -91,9 +97,10 @@ $sql = "SELECT id, isim, foto_yolu, kisi_alani FROM arabalar";
                 <form action="rezervasyon.php" method="POST">
                   <input type="hidden" name="car_id" value="<?= htmlspecialchars($row['id']) ?>">
                   <input type="hidden" name="kisiler" value="<?= htmlspecialchars($kisiler) ?>">
+                  <input type="hidden" name="nereden" value="<?= htmlspecialchars($nereden) ?>">
                   <input type="hidden" name="nereye" value="<?= htmlspecialchars($nereye) ?>">
                   <input type="hidden" name="fiyat" value="<?= htmlspecialchars($fiyat) ?>">
-                  <button type="submit">Arabayı Seç</button>
+                  <button type="submit"><?= translate('btn_arabayı_sec') ?></button>
                 </form>
               </div>
 
@@ -102,7 +109,7 @@ $sql = "SELECT id, isim, foto_yolu, kisi_alani FROM arabalar";
           <?php
         }
       } else {
-        echo "<p>Mevcut araç bulunamadı.</p>";
+        echo "<p>" . translate('hata_arac_bulunamadi') . "</p>";
     } ?>
   </div>
 </div>

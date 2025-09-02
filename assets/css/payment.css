@@ -4,6 +4,29 @@
     display: flex;
     justify-content: center;
 }
+
+/* reCAPTCHA Stilleri */
+.captcha-container {
+    margin: 20px 0;
+    text-align: center;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.captcha-container .g-recaptcha {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.captcha-container .g-recaptcha iframe {
+    border-radius: 4px;
+}
+.Bbutton-box{
+position: absolute;
+left: 5px;
+}
 .parent{
     background-color: #fff;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -12,10 +35,9 @@
     height: fit-content;
     width: 50%;
 }
-.payment-options{
+.flex-options{
     display: flex;
     justify-content: center;
-    margin-bottom: 40px;
 }
 label{
     width: 45%;
@@ -83,6 +105,7 @@ span{
     .flex{
         flex-direction: column-reverse;
         align-items: center;
+        margin-top: 80px;
     }
     .parent{
         width: 95%;
@@ -91,5 +114,9 @@ span{
     }
     .transport-info{
         margin-top: 40px;
+    }
+    .Bbutton-box{
+        position: absolute;
+        top: 120px;
     }
 }
