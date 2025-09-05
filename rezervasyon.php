@@ -141,20 +141,20 @@ if ($result && $result->num_rows > 0) {
       <div class="personelForms">
         <div class="column">
           <label for="musteri_isim"><?= translate('iletisim_ad') ?> <br></label>
-          <input id="musteri_isim" type="text" name="musteri_isim" placeholder="<?= translate('iletisim_ad') ?>" value="<?= htmlspecialchars($musteri_isim) ?>" required>
+          <input id="musteri_isim" type="text" name="musteri_isim" placeholder="<?= translate('iletisim_ad') ?>" value="<?= htmlspecialchars($musteri_isim) ?>" required maxlength="30">
         </div>
         <div class="column">
           <label for="email"><?= translate('iletisim_email') ?> <br></label>
-          <input id="email" type="email" name="email" placeholder="<?= translate('iletisim_email') ?>" value="<?= htmlspecialchars($email) ?>" required>
+          <input id="email" type="email" name="email" placeholder="<?= translate('iletisim_email') ?>" value="<?= htmlspecialchars($email) ?>" required maxlength="40">
         </div>  
         <div class="column">
           <label for="telno"><?= translate('iletisim_tel') ?> <br></label>
-          <input id="telno" type="tel" name="telno" placeholder="<?= translate('iletisim_tel') ?>"  value="<?= htmlspecialchars($telno) ?>" required>
+          <input id="telno" type="tel" name="telno" placeholder="<?= translate('iletisim_tel') ?>"  value="<?= htmlspecialchars($telno) ?>" required maxlength="30">
         </div>
       </div>
       <!--About Arrive-->
-          <h3><?= translate('sayfa_varis_bilgileri') ?></h3>
-          <div class="About-Arrive">
+          <h3 <?php if ($nereden != "Adrasan"){ echo 'style="display:none;"'; } ?>><?= translate('sayfa_varis_bilgileri') ?></h3>
+          <div class="About-Arrive" <?php if ($nereden != "Adrasan"){ echo 'style="display:none;"'; } ?>>
             <div class="column">
               <label for="ucak_inis"><?= translate('sayfa_ucak_inis') ?> <br></label>
               <input id="ucak_inis" type="datetime-local" name="ucak_inis" value="<?= htmlspecialchars($ucak_inis) ?>" required>
@@ -165,7 +165,7 @@ if ($result && $result->num_rows > 0) {
             </div>
             <div class="column">
               <label for="otel"><?= translate('sayfa_otel_adi') ?> <br></label>
-             <input id="otel" type="text" placeholder="<?= translate('placeholder_otel_adi') ?>" name="otel" value="<?= htmlspecialchars($otel) ?>">
+             <input id="otel" type="text" placeholder="<?= translate('placeholder_otel_adi') ?>" name="otel" value="<?= htmlspecialchars($otel) ?>" maxlength="30">
             </div>
           </div>  
       <!--Passengers-->
@@ -175,7 +175,7 @@ if ($result && $result->num_rows > 0) {
       <div class="passengerİnfo">
         <div class="column"> 
           <label><?= translate('sayfa_ad_soyad') ?> <br></label>
-          <input type="text" name="yolcu<?php echo "$i";?>" placeholder="<?= translate('placeholder_ad_soyad') ?>" value="<?= htmlspecialchars($yolcu_bilgileri[$i]['isim']) ?>" required>
+          <input type="text" name="yolcu<?php echo "$i";?>" placeholder="<?= translate('placeholder_ad_soyad') ?>" value="<?= htmlspecialchars($yolcu_bilgileri[$i]['isim']) ?>" required maxlength="30">
         </div>
         <div class="column"> 
           <label><?= translate('sayfa_kimlik_pasaport') ?> <br></label>

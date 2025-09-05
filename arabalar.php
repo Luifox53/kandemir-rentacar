@@ -9,11 +9,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $kisiler = $_POST["kisiler"] ?? '';
     $nereden = $_POST['nereden'] ?? '';
     $nereye = $_POST['nereye'] ?? '';
+    $gidis_donus = isset($_POST['gidis_donus']) ? 'on' : 'off';
     
     // Session'a kaydet
     setSessionData('kisiler', $kisiler);
     setSessionData('nereden', $nereden);
     setSessionData('nereye', $nereye);
+    setSessionData('gidis_donus', $gidis_donus);
     
     // POST sonrası yönlendirme (PRG pattern)
     header("Location: arabalar.php");
@@ -24,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $kisiler = getSessionData('kisiler');
 $nereden = getSessionData('nereden');
 $nereye = getSessionData('nereye');
+$gidis_donus = getSessionData('gidis_donus');
 
 $lokasyon_fiyat = [];
 $sql2 = "SELECT lokasyon, fiyat FROM lokasyonlar";

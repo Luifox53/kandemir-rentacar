@@ -47,7 +47,7 @@ $result2 = $conn->query($sql2);
   <div class="formgroups">
     <div class="formgroup">
       <label for="kisiler"><?= translate('anasayfa_kisi_sayisi') ?></label>
-      <select name="kisiler" id="kisiler">
+  <select name="kisiler" id="kisiler" required>
         <option value="" disabled selected><i class="fa-solid fa-user"></i> <?= translate('anasayfa_kisi_sayisi') ?></option>
           <?php for ($i = 1; $i <= 10; $i++): ?>
               <option value="<?= $i ?>"><?= $i ?></option>
@@ -81,7 +81,7 @@ $result2 = $conn->query($sql2);
       </select>
     </div>
     <div class="formgroup" id="checkbox">
-      <label id="checklabel" for="gidis_donus"> gidis donus </label>
+      <label id="checklabel" for="gidis_donus">Gidiş - Dönüş</label>
       <input type="checkbox" name="gidis_donus" id="gidis_donus">
     </div>
 
